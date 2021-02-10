@@ -40,4 +40,7 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "is_enabled")
+    private String is_enabled;
 }

@@ -8,6 +8,7 @@ CREATE TABLE ref.ccy_pair_type
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_ccy_pair_type
         PRIMARY KEY (id)
@@ -21,6 +22,7 @@ CREATE TABLE ref.product_type
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_product_type
         PRIMARY KEY (id)
@@ -34,6 +36,7 @@ CREATE TABLE ref.style_type
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_style_type
         PRIMARY KEY (id)
@@ -47,6 +50,7 @@ CREATE TABLE ref.direction_type
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_direction_type
         PRIMARY KEY (id)
@@ -60,6 +64,7 @@ CREATE TABLE ref.strategy_type
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_strategy_type
         PRIMARY KEY (id)
@@ -73,6 +78,7 @@ CREATE TABLE ref.pay_ccy_type
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_pay_ccy_type
         PRIMARY KEY (id)
@@ -86,6 +92,7 @@ CREATE TABLE ref.premium_ccy_type
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_premium_ccy_type
         PRIMARY KEY (id)
@@ -99,6 +106,7 @@ CREATE TABLE ref.premium_type
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_premium_type
         PRIMARY KEY (id)
@@ -112,6 +120,7 @@ CREATE TABLE ref.legal_entity
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_legal_entity
         PRIMARY KEY (id)
@@ -131,6 +140,7 @@ CREATE TABLE org.customer
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
     is_supported BOOLEAN      NOT NULL DEFAULT FALSE,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_org_customer
         PRIMARY KEY (id)
@@ -144,6 +154,7 @@ CREATE TABLE org.trader
     updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_org_trader
         PRIMARY KEY (id)
@@ -176,7 +187,7 @@ CREATE TABLE org.operation
     premium_ccy_type  UUID         NOT NULL,
     premium_type      UUID         NOT NULL,
     legal_entity      UUID         NOT NULL,
-
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_org_operation
         PRIMARY KEY (id),
@@ -216,25 +227,3 @@ CREATE TABLE org.operation
 );
 ALTER TABLE org.operation
     OWNER TO postgres;
-
-
-/*CREATE TABLE org.base_reference
-(
-    id           UUID         NOT NULL,
-    updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    ccyPair      VARCHAR(255) DEFAULT NULL,
-    type         VARCHAR(255) DEFAULT NULL,
-    style        VARCHAR(255) DEFAULT NULL,
-    direction    VARCHAR(255) DEFAULT NULL,
-    strategy     VARCHAR(255) DEFAULT NULL,
-    payCcy       VARCHAR(255) DEFAULT NULL,
-    premiumCcy   VARCHAR(255) DEFAULT NULL,
-    premiumType  VARCHAR(255) DEFAULT NULL,
-    legalEntity  VARCHAR(255) DEFAULT NULL,
-
-    CONSTRAINT pk_org_base_reference
-        PRIMARY KEY (id)
-);
-ALTER TABLE org.base_reference
-    OWNER TO postgres;*/

@@ -40,6 +40,9 @@ public abstract class BaseOperation {
     @Column(name = "updated_date", nullable = false)
     protected LocalDateTime updatedDate;
 
+    @Column(name = "is_enabled")
+    private String is_enabled;
+
     private Date tradeDate;
     private BigDecimal amount1;
     private BigDecimal amount2;

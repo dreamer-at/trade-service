@@ -5,6 +5,9 @@ import com.example.tradeservice.dto.RequestCheckDTO;
 import java.util.List;
 
 public interface OperationService {
+
+
+
     RequestCheckDTO checkOperation(RequestCheckDTO dto);
 
     List<RequestCheckDTO> checkAllOperation(RequestCheckDTO dto);
