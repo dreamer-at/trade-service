@@ -41,16 +41,33 @@ public abstract class BaseOperation {
     protected LocalDateTime updatedDate;
 
     @Column(name = "is_enabled")
-    private String is_enabled;
+    private Boolean is_enabled;
 
+    @Column(name = "trade_date")
     private Date tradeDate;
+
+    @Column(name = "amount1")
     private BigDecimal amount1;
+
+    @Column(name = "amount2")
     private BigDecimal amount2;
+
+    @Column(name = "rate")
     private Double rate;
+
+    @Column(name = "delivery_date")
     private Date deliveryDate;
+
+    @Column(name = "expiry_date")
     private Date expiryDate;
-    private String premium;
+
+    @Column(name = "premium")
+    private Double premium;
+
+    @Column(name = "premium_date")
     private Date premiumDate;
+
+    @Column(name = "exercise_start_date")
     private Date exerciseStartDate;
 
     @OneToOne(fetch = FetchType.LAZY)

@@ -28,61 +28,61 @@ $BODY$
         /*
           Customer test data
         */
-        customer_1_uuid         uuid         := uuid_generate_v4();
-        customer_2_uuid         uuid         := uuid_generate_v4();
-        customer_3_uuid         uuid         := uuid_generate_v4();
-        customer_4_uuid         uuid         := uuid_generate_v4();
+        customer_1_uuid         uuid             := uuid_generate_v4();
+        customer_2_uuid         uuid             := uuid_generate_v4();
+        customer_3_uuid         uuid             := uuid_generate_v4();
+        customer_4_uuid         uuid             := uuid_generate_v4();
         /*
           Trader test data
         */
-        trader_1_uuid           uuid         := uuid_generate_v4();
-        trader_2_uuid           uuid         := uuid_generate_v4();
-        trader_3_uuid           uuid         := uuid_generate_v4();
-        trader_4_uuid           uuid         := uuid_generate_v4();
+        trader_1_uuid           uuid             := uuid_generate_v4();
+        trader_2_uuid           uuid             := uuid_generate_v4();
+        trader_3_uuid           uuid             := uuid_generate_v4();
+        trader_4_uuid           uuid             := uuid_generate_v4();
         /*
           All reference test data
         */
-        ccy_pair_type_1_uuid    uuid         := uuid_generate_v4();
-        ccy_pair_type_1         varchar(255) := 'EURUSD';
-        product_type_1_uuid     uuid         := uuid_generate_v4();
-        product_type_2_uuid     uuid         := uuid_generate_v4();
-        product_type_3_uuid     uuid         := uuid_generate_v4();
-        product_type_1          varchar(255) := 'Spot';
-        product_type_2          varchar(255) := 'VanillaOption';
-        product_type_3          varchar(255) := 'Forward';
-        style_type_1_uuid       uuid         := uuid_generate_v4();
-        style_type_2_uuid       uuid         := uuid_generate_v4();
-        style_type_1            varchar(255) := 'EUROPEAN';
-        style_type_2            varchar(255) := 'AMERICAN';
-        direction_type_1_uuid   uuid         := uuid_generate_v4();
-        direction_type_2_uuid   uuid         := uuid_generate_v4();
-        direction_type_1        varchar(255) := 'BUY';
-        direction_type_2        varchar(255) := 'SELL';
-        strategy_type_1_uuid    uuid         := uuid_generate_v4();
-        strategy_type_1         varchar(255) := 'CALL';
-        pay_ccy_type_1_uuid     uuid         := uuid_generate_v4();
-        pay_ccy_type_1          varchar(255) := 'USD';
-        premium_ccy_type_1_uuid uuid         := uuid_generate_v4();
-        premium_ccy_type_1      varchar(255) := 'USD';
-        premium_type_1_uuid     uuid         := uuid_generate_v4();
-        premium_type_1          varchar(255) := '%USD';
-        legal_entity_1_uuid     uuid         := uuid_generate_v4();
-        legal_entity_1          varchar(255) := 'CSZurich';
+        ccy_pair_type_1_uuid    uuid             := uuid_generate_v4();
+        ccy_pair_type_1         varchar(255)     := 'EURUSD';
+        product_type_1_uuid     uuid             := uuid_generate_v4();
+        product_type_2_uuid     uuid             := uuid_generate_v4();
+        product_type_3_uuid     uuid             := uuid_generate_v4();
+        product_type_1          varchar(255)     := 'Spot';
+        product_type_2          varchar(255)     := 'VanillaOption';
+        product_type_3          varchar(255)     := 'Forward';
+        style_type_1_uuid       uuid             := uuid_generate_v4();
+        style_type_2_uuid       uuid             := uuid_generate_v4();
+        style_type_1            varchar(255)     := 'EUROPEAN';
+        style_type_2            varchar(255)     := 'AMERICAN';
+        direction_type_1_uuid   uuid             := uuid_generate_v4();
+        direction_type_2_uuid   uuid             := uuid_generate_v4();
+        direction_type_1        varchar(255)     := 'BUY';
+        direction_type_2        varchar(255)     := 'SELL';
+        strategy_type_1_uuid    uuid             := uuid_generate_v4();
+        strategy_type_1         varchar(255)     := 'CALL';
+        pay_ccy_type_1_uuid     uuid             := uuid_generate_v4();
+        pay_ccy_type_1          varchar(255)     := 'USD';
+        premium_ccy_type_1_uuid uuid             := uuid_generate_v4();
+        premium_ccy_type_1      varchar(255)     := 'USD';
+        premium_type_1_uuid     uuid             := uuid_generate_v4();
+        premium_type_1          varchar(255)     := '%USD';
+        legal_entity_1_uuid     uuid             := uuid_generate_v4();
+        legal_entity_1          varchar(255)     := 'CSZurich';
 
 
         /*
          Operation reference test data
         */
-        operation_1_uuid        uuid         := uuid_generate_v4();
-        tradeDate_1             date         := current_date;
-        amount_1                numeric      := 100000.22;
-        amount_2                numeric      := 220000.22;
-        rate_1                  decimal      := 2.2;
-        deliveryDate_1          date         := current_date;
-        expiryDate_1            date         := current_date;
-        premium_1               decimal      := 0.20;
-        premiumDate_1           date         := current_date;
-        exerciseStartDate_1     date         := current_date;
+        operation_1_uuid        uuid             := uuid_generate_v4();
+        tradeDate_1             date             := current_date;
+        amount_1                numeric          := 100000.22;
+        amount_2                numeric          := 220000.22;
+        rate_1                  double precision := 2.2;
+        deliveryDate_1          date             := current_date;
+        expiryDate_1            date             := current_date;
+        premium_1               double precision := 0.20;
+        premiumDate_1           date             := current_date;
+        exerciseStartDate_1     date             := current_date;
 
 
     BEGIN
@@ -130,14 +130,13 @@ $BODY$
         VALUES (legal_entity_1_uuid, legal_entity_1);
 
 
-        INSERT INTO org.operation(id, tradeDate, amount1, amount2, rate, deliveryDate, expiryDate, premium,
-                                  premiumDate, exerciseStartDate, customer_id, trader_id, ccy_pair_type,
+        INSERT INTO org.operation(id, trade_date, amount1, amount2, rate, delivery_date, expiry_date, premium,
+                                  premium_date, exercise_start_date, customer_id, trader_id, ccy_pair_type,
                                   product_type, style_type, direction_type, strategy_type, pay_ccy_type,
                                   premium_ccy_type, premium_type, legal_entity)
         VALUES (operation_1_uuid, tradeDate_1, amount_1, amount_2, rate_1, deliveryDate_1, expiryDate_1,
                 premium_1, premiumDate_1, exerciseStartDate_1, customer_4_uuid, trader_4_uuid, ccy_pair_type_1_uuid,
                 product_type_2_uuid, style_type_1_uuid, direction_type_1_uuid, strategy_type_1_uuid,
                 pay_ccy_type_1_uuid, premium_ccy_type_1_uuid, premium_type_1_uuid, legal_entity_1_uuid);
-
     END;
 $BODY$ LANGUAGE plpgsql;

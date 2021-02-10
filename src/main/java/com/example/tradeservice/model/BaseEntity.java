@@ -42,5 +42,5 @@ public abstract class BaseEntity implements Serializable {
     private String name;
 
     @Column(name = "is_enabled")
-    private String is_enabled;
+    private Boolean is_enabled;
 }

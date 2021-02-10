@@ -6,15 +6,13 @@ import java.util.List;
 
 public interface OperationService {
 
-
-
-    RequestCheckDTO checkOperation(RequestCheckDTO dto);
+    Boolean checkOperation(RequestCheckDTO dto);
 
     List<RequestCheckDTO> checkAllOperation(RequestCheckDTO dto);
 
-    RequestCheckDTO  valueDateCannotBeBeforeTradeDate(RequestCheckDTO dto);
+    Boolean  valueDateCannotBeBeforeTradeDate(RequestCheckDTO dto);
 
-    RequestCheckDTO  valueDateCannotFallOnWeekendOrNonWorkingDayForCurrency(RequestCheckDTO dto);
+    Boolean  valueDateCannotFallOnWeekendOrNonWorkingDayForCurrency(RequestCheckDTO dto);
 
     RequestCheckDTO  ifTheCounterpartyIsOneOfTheSupportedOnes(RequestCheckDTO dto);
 

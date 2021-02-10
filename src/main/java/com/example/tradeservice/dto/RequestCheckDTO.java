@@ -1,5 +1,6 @@
 package com.example.tradeservice.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -7,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestCheckDTO {
     private String customer;
     private String ccyPair;
@@ -26,4 +28,6 @@ public class RequestCheckDTO {
     private Date premiumDate;
     private String legalEntity;
     private String trader;
+    private Date valueDate;
+
 }
