@@ -1,0 +1,35 @@
+#server:
+#  servlet:
+#    context-path: /api
+server:
+  port: 8090
+  servlet:
+    context-path: /api
+
+spring:
+  main:
+    banner-mode: off
+  jmx:
+    enabled: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/trade-service
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    show-sql: false
+    open-in-view: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: false
+    baseline-on-migrate: true
+    baseline-version: 0.1
+    url: ${spring.datasource.url}
+    user: flyway
+    password: flyway
+
