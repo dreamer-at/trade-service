@@ -5,6 +5,7 @@ import com.example.tradeservice.dto.RequestCheckDTO;
 import com.example.tradeservice.service.OperationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,11 +46,13 @@ public class CheckControllerV1 {
     private final OperationService service;
 
     @PostMapping
-    public boolean checkOperation(@RequestBody RequestCheckDTO dto) {
+    @ResponseStatus(HttpStatus.OK)
+    public String checkOperation(@RequestBody RequestCheckDTO dto) {
         return service.checkOperation(dto);
     }
 
     @PostMapping("all")
+    @ResponseStatus(HttpStatus.OK)
     public List<RequestCheckDTO> checkAllOperations(@RequestBody RequestCheckDTO dto) {
         return service.checkAllOperation(dto);
     }

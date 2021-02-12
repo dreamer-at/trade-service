@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +29,5 @@ public class RequestCheckDTO {
     private String legalEntity;
     private String trader;
     private Date valueDate;
-    private Date exerciseStartDate;
-
+    private Date excerciseStartDate;
 }

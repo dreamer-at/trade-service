@@ -1,7 +1,9 @@
 package com.example.tradeservice.service.impl;
 
 import com.example.tradeservice.dto.RequestCheckDTO;
+import com.example.tradeservice.model.Operation;
 import com.example.tradeservice.model.reference.CurrencyHolidayType;
+import com.example.tradeservice.repository.OperationRepository;
 import com.example.tradeservice.service.CustomerService;
 import com.example.tradeservice.service.OperationService;
 import com.example.tradeservice.service.ReferenceService;
@@ -23,28 +25,38 @@ import static com.example.tradeservice.util.utils.TrUtils.getCurrencyInstance;
 @Service
 @RequiredArgsConstructor
 public class OperationServiceImpl implements OperationService {
-
+    private final OperationRepository repository;
     private final ReferenceService referenceService;
     private final CustomerService customerService;
 
     @Override
-    public boolean checkOperation(final RequestCheckDTO dto) {
+    public String checkOperation(final RequestCheckDTO dto) {
+
         if (checkValueDateAndTradeDate(dto)) {
             if (valueOrCurrencyDateOnWeekend(dto)) {
                 if (ifCustomerIsSupported(dto)) {
                     if (validateValueDateByProductType(dto)) {
                         if (validateCurrenciesByISO4217(dto)) {
                             if (validateAmericanStyle(dto)) {
-                                return true;
+                                if (expiryAndPremiumDateBeforeDeliveryDate(dto)) {
+                                    log.info("All checks passed successfully, Customer: '{}', Trade date: '{}' ",
+                                            dto.getCustomer(), dto.getTradeDate());
+                                }
                             }
                         }
                     }
                 }
             }
-            log.info("All validations was successful, Customer: '{}', Trade date: '{}' ",
-                    dto.getCustomer(), dto.getTradeDate());
-            return true;
         }
+        saveEntity(dto);
+        return "All checks passed successfully";
+    }
+
+    // TODO finish ip with static method toOperation in OperationDTO
+    @Override
+    public void saveEntity(final RequestCheckDTO dto) {
+        Operation o = new Operation();
+        // repository.save(o);
     }
 
     @Override
@@ -92,6 +104,9 @@ public class OperationServiceImpl implements OperationService {
             throw new BadRequestException("The Counterparty/Customer is one of the supported ones!",
                     dto.getClass(), dto.getCustomer(), dto.getTradeDate());
         }
+        log.info("Validation Counterparty/Customer is one of the supported ones was successful" +
+                        ", Value date: '{}', Trade date: '{}' ",
+                dto.getValueDate(), dto.getTradeDate());
         return true;
     }
 
@@ -120,6 +135,9 @@ public class OperationServiceImpl implements OperationService {
                 }
             }
         }
+        log.info("Validation by product type and value date was successful " +
+                        ", Value date: '{}', Product type: '{}' ",
+                dto.getValueDate(), dto.getType());
         return true;
     }
 
@@ -127,6 +145,9 @@ public class OperationServiceImpl implements OperationService {
     public boolean validateCurrenciesByISO4217(final RequestCheckDTO dto) {
         if (getCurrencyInstance(dto.getCcyPair().substring(0, 3)).isPresent() &&
                 getCurrencyInstance(dto.getCcyPair().substring(3, 6)).isPresent()) {
+            log.info("Validation validate currencies by ISO-4217 was successful " +
+                            ", Trade date: '{}', Trade date: '{}' ",
+                    dto.getTradeDate(), dto.getCcyPair());
             return true;
         }
         throw new BadRequestException("The currencies of operation not are valid ISO codes (ISO 4217)",
@@ -136,14 +157,32 @@ public class OperationServiceImpl implements OperationService {
     @Override
     public boolean validateAmericanStyle(final RequestCheckDTO dto) {
         if (dto.getStyle().equals("AMERICAN")) {
-            if ((dto.getExerciseStartDate().after(dto.getTradeDate())) &&
-                    dto.getExerciseStartDate().before(dto.getExpiryDate())) {
+            if ((dto.getExcerciseStartDate().after(dto.getTradeDate())) &&
+                    dto.getExcerciseStartDate().before(dto.getExpiryDate())) {
+                log.info("Validate by AMERICAN style was successful " +
+                                ", Trade date: '{}', Trade date: '{}' ",
+                        dto.getStyle(), dto.getExcerciseStartDate());
                 return true;
             }
-            throw new BadRequestException("American option style must be in addition the excerciseStartDate, " +
+            throw new BadRequestException("American option style must be in addition the exercise start date, " +
                     "which has to be after the trade date but before the expiry date!",
-                    dto.getClass(), dto.getValueDate().toString(), dto.getCcyPair());
+                    dto.getClass(), dto.getValueDate().toString(), dto.getExcerciseStartDate());
         }
+        log.info("Еhis operation is not American style Trade date: '{}', Trade date: '{}' ",
+                dto.getStyle(), dto.getExcerciseStartDate());
         return false;
+    }
+
+    @Override
+    public boolean expiryAndPremiumDateBeforeDeliveryDate(final RequestCheckDTO dto) {
+        if (dto.getExpiryDate().before(dto.getDeliveryDate()) &&
+                dto.getPremiumDate().before(dto.getDeliveryDate())) {
+            log.info("Validate by expiry and premium date before delivery date " +
+                            ", Trade date: '{}', Delivery date: '{}' ",
+                    dto.getTradeDate(), dto.getDeliveryDate());
+            return true;
+        }
+        throw new BadRequestException("Expiry date and premium date shall be before delivery date!",
+                dto.getClass(), dto.getValueDate().toString(), dto.getCcyPair());
     }
 }

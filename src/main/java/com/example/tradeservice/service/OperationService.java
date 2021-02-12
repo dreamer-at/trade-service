@@ -1,12 +1,13 @@
 package com.example.tradeservice.service;
 
 import com.example.tradeservice.dto.RequestCheckDTO;
+import com.example.tradeservice.model.Operation;
 
 import java.util.List;
 
 public interface OperationService {
 
-    boolean checkOperation(RequestCheckDTO dto);
+    String checkOperation(RequestCheckDTO dto);
 
     List<RequestCheckDTO> checkAllOperation(RequestCheckDTO dto);
 
@@ -21,4 +22,8 @@ public interface OperationService {
     boolean validateCurrenciesByISO4217(RequestCheckDTO dto);
 
     boolean validateAmericanStyle(RequestCheckDTO dto);
+
+    boolean  expiryAndPremiumDateBeforeDeliveryDate(RequestCheckDTO dto);
+
+    void saveEntity(RequestCheckDTO dto);
 }
