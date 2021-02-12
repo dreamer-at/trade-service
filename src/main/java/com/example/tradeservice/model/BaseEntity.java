@@ -2,6 +2,7 @@ package com.example.tradeservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -41,6 +42,6 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "is_enabled")
-    private Boolean is_enabled;
+    @Builder.Default
+    private Boolean isEnabled = true;
 }

@@ -6,17 +6,19 @@ import java.util.List;
 
 public interface OperationService {
 
-    Boolean checkOperation(RequestCheckDTO dto);
+    boolean checkOperation(RequestCheckDTO dto);
 
     List<RequestCheckDTO> checkAllOperation(RequestCheckDTO dto);
 
-    Boolean  valueDateCannotBeBeforeTradeDate(RequestCheckDTO dto);
+    boolean checkValueDateAndTradeDate(RequestCheckDTO dto);
 
-    Boolean  valueDateCannotFallOnWeekendOrNonWorkingDayForCurrency(RequestCheckDTO dto);
+    boolean valueOrCurrencyDateOnWeekend(RequestCheckDTO dto);
 
-    RequestCheckDTO  ifTheCounterpartyIsOneOfTheSupportedOnes(RequestCheckDTO dto);
+    boolean ifCustomerIsSupported(RequestCheckDTO dto);
 
-    RequestCheckDTO  validateCurrenciesIfTheyAreValidISOCodes(RequestCheckDTO dto);
+    boolean validateValueDateByProductType(RequestCheckDTO dto);
 
-    RequestCheckDTO  validateTheValueDateAgainstTheProductType(RequestCheckDTO dto);
+    boolean validateCurrenciesByISO4217(RequestCheckDTO dto);
+
+    boolean validateAmericanStyle(RequestCheckDTO dto);
 }

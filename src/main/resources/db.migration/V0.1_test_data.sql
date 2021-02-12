@@ -28,64 +28,97 @@ $BODY$
         /*
           Customer test data
         */
-        customer_1_uuid         uuid             := uuid_generate_v4();
-        customer_2_uuid         uuid             := uuid_generate_v4();
-        customer_3_uuid         uuid             := uuid_generate_v4();
-        customer_4_uuid         uuid             := uuid_generate_v4();
+        customer_1_uuid               uuid             := uuid_generate_v4();
+        customer_2_uuid               uuid             := uuid_generate_v4();
+        customer_3_uuid               uuid             := uuid_generate_v4();
+        customer_4_uuid               uuid             := uuid_generate_v4();
         /*
           Trader test data
         */
-        trader_1_uuid           uuid             := uuid_generate_v4();
-        trader_2_uuid           uuid             := uuid_generate_v4();
-        trader_3_uuid           uuid             := uuid_generate_v4();
-        trader_4_uuid           uuid             := uuid_generate_v4();
+        trader_1_uuid                 uuid             := uuid_generate_v4();
+        trader_2_uuid                 uuid             := uuid_generate_v4();
+        trader_3_uuid                 uuid             := uuid_generate_v4();
+        trader_4_uuid                 uuid             := uuid_generate_v4();
         /*
           All reference test data
         */
-        ccy_pair_type_1_uuid    uuid             := uuid_generate_v4();
-        ccy_pair_type_1         varchar(255)     := 'EURUSD';
-        product_type_1_uuid     uuid             := uuid_generate_v4();
-        product_type_2_uuid     uuid             := uuid_generate_v4();
-        product_type_3_uuid     uuid             := uuid_generate_v4();
-        product_type_1          varchar(255)     := 'Spot';
-        product_type_2          varchar(255)     := 'VanillaOption';
-        product_type_3          varchar(255)     := 'Forward';
-        style_type_1_uuid       uuid             := uuid_generate_v4();
-        style_type_2_uuid       uuid             := uuid_generate_v4();
-        style_type_1            varchar(255)     := 'EUROPEAN';
-        style_type_2            varchar(255)     := 'AMERICAN';
-        direction_type_1_uuid   uuid             := uuid_generate_v4();
-        direction_type_2_uuid   uuid             := uuid_generate_v4();
-        direction_type_1        varchar(255)     := 'BUY';
-        direction_type_2        varchar(255)     := 'SELL';
-        strategy_type_1_uuid    uuid             := uuid_generate_v4();
-        strategy_type_1         varchar(255)     := 'CALL';
-        pay_ccy_type_1_uuid     uuid             := uuid_generate_v4();
-        pay_ccy_type_1          varchar(255)     := 'USD';
-        premium_ccy_type_1_uuid uuid             := uuid_generate_v4();
-        premium_ccy_type_1      varchar(255)     := 'USD';
-        premium_type_1_uuid     uuid             := uuid_generate_v4();
-        premium_type_1          varchar(255)     := '%USD';
-        legal_entity_1_uuid     uuid             := uuid_generate_v4();
-        legal_entity_1          varchar(255)     := 'CSZurich';
+        ccy_pair_type_1_uuid          uuid             := uuid_generate_v4();
+        ccy_pair_type_1               varchar(255)     := 'EURUSD';
+        product_type_1_uuid           uuid             := uuid_generate_v4();
+        product_type_2_uuid           uuid             := uuid_generate_v4();
+        product_type_3_uuid           uuid             := uuid_generate_v4();
+        product_type_1                varchar(255)     := 'Spot';
+        product_type_2                varchar(255)     := 'VanillaOption';
+        product_type_3                varchar(255)     := 'Forward';
+        style_type_1_uuid             uuid             := uuid_generate_v4();
+        style_type_2_uuid             uuid             := uuid_generate_v4();
+        style_type_1                  varchar(255)     := 'EUROPEAN';
+        style_type_2                  varchar(255)     := 'AMERICAN';
+        direction_type_1_uuid         uuid             := uuid_generate_v4();
+        direction_type_2_uuid         uuid             := uuid_generate_v4();
+        direction_type_1              varchar(255)     := 'BUY';
+        direction_type_2              varchar(255)     := 'SELL';
+        strategy_type_1_uuid          uuid             := uuid_generate_v4();
+        strategy_type_1               varchar(255)     := 'CALL';
+        pay_ccy_type_1_uuid           uuid             := uuid_generate_v4();
+        pay_ccy_type_1                varchar(255)     := 'USD';
+        premium_ccy_type_1_uuid       uuid             := uuid_generate_v4();
+        premium_ccy_type_1            varchar(255)     := 'USD';
+        premium_type_1_uuid           uuid             := uuid_generate_v4();
+        premium_type_1                varchar(255)     := '%USD';
+        legal_entity_1_uuid           uuid             := uuid_generate_v4();
+        legal_entity_1                varchar(255)     := 'CSZurich';
+        currency_holiday_type_1_uuid  uuid             := uuid_generate_v4();
+        currency_holiday_type_2_uuid  uuid             := uuid_generate_v4();
+        currency_holiday_type_3_uuid  uuid             := uuid_generate_v4();
+        currency_holiday_type_4_uuid  uuid             := uuid_generate_v4();
+        currency_holiday_type_5_uuid  uuid             := uuid_generate_v4();
+        currency_holiday_type_6_uuid  uuid             := uuid_generate_v4();
+        currency_holiday_type_7_uuid  uuid             := uuid_generate_v4();
+        currency_holiday_type_8_uuid  uuid             := uuid_generate_v4();
+        currency_holiday_type_9_uuid  uuid             := uuid_generate_v4();
+        currency_holiday_type_10_uuid uuid             := uuid_generate_v4();
+        currency_holiday_type_1       date             := '2016-01-01';
+        currency_holiday_type_2       date             := '2016-01-18';
+        currency_holiday_type_3       date             := '2016-02-15';
+        currency_holiday_type_4       date             := '2016-05-30';
+        currency_holiday_type_5       date             := '2016-07-04';
+        currency_holiday_type_6       date             := '2016-09-05';
+        currency_holiday_type_7       date             := '2016-10-10';
+        currency_holiday_type_8       date             := '2016-11-11';
+        currency_holiday_type_9       date             := '2016-11-24';
+        currency_holiday_type_10      date             := '2016-12-26';
 
 
         /*
          Operation reference test data
         */
-        operation_1_uuid        uuid             := uuid_generate_v4();
-        tradeDate_1             date             := current_date;
-        amount_1                numeric          := 100000.22;
-        amount_2                numeric          := 220000.22;
-        rate_1                  double precision := 2.2;
-        deliveryDate_1          date             := current_date;
-        expiryDate_1            date             := current_date;
-        premium_1               double precision := 0.20;
-        premiumDate_1           date             := current_date;
-        exerciseStartDate_1     date             := current_date;
+        operation_1_uuid              uuid             := uuid_generate_v4();
+        tradeDate_1                   date             := current_date;
+        amount_1                      numeric          := 100000.22;
+        amount_2                      numeric          := 220000.22;
+        rate_1                        double precision := 2.2;
+        deliveryDate_1                date             := current_date;
+        expiryDate_1                  date             := current_date;
+        premium_1                     double precision := 0.20;
+        premiumDate_1                 date             := current_date;
+        exerciseStartDate_1           date             := current_date;
 
 
     BEGIN
+        INSERT INTO ref.currency_holiday_type(id, name, currency, holiday_date)
+        VALUES (currency_holiday_type_1_uuid, 'New Year', 'EURUSD', currency_holiday_type_1),
+               (currency_holiday_type_2_uuid, 'Martin Luther King ''s Day', 'EURUSD', currency_holiday_type_2),
+               (currency_holiday_type_3_uuid, 'Washington Day', 'EURUSD', currency_holiday_type_3),
+               (currency_holiday_type_4_uuid, 'Memorial Day', 'EURUSD', currency_holiday_type_4),
+               (currency_holiday_type_5_uuid, 'Independence Day', 'EURUSD', currency_holiday_type_5),
+               (currency_holiday_type_6_uuid, 'Labor Day', 'EURUSD', currency_holiday_type_6),
+               (currency_holiday_type_7_uuid, 'Columbus Day', 'EURUSD', currency_holiday_type_7),
+               (currency_holiday_type_8_uuid, 'Veterans Day', 'EURUSD', currency_holiday_type_8),
+               (currency_holiday_type_9_uuid, 'Thanksgiving Day', 'EURUSD', currency_holiday_type_9),
+               (currency_holiday_type_10_uuid, 'Mon after Christmas', 'EURUSD', currency_holiday_type_10);
+
+
         INSERT INTO org.customer(id, name, is_supported)
         VALUES (customer_1_uuid, 'PLUTO1', true),
                (customer_2_uuid, 'PLUTO2', true),
@@ -138,5 +171,8 @@ $BODY$
                 premium_1, premiumDate_1, exerciseStartDate_1, customer_4_uuid, trader_4_uuid, ccy_pair_type_1_uuid,
                 product_type_2_uuid, style_type_1_uuid, direction_type_1_uuid, strategy_type_1_uuid,
                 pay_ccy_type_1_uuid, premium_ccy_type_1_uuid, premium_type_1_uuid, legal_entity_1_uuid);
-    END;
+
+
+    END ;
+
 $BODY$ LANGUAGE plpgsql;

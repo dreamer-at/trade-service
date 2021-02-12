@@ -2,6 +2,22 @@
 CREATE SCHEMA ref;
 ALTER SCHEMA ref OWNER TO postgres;
 
+CREATE TABLE ref.currency_holiday_type
+(
+    id           UUID         NOT NULL,
+    updated_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_date TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    name         VARCHAR(255) NOT NULL,
+    is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
+    currency     VARCHAR(6)   NOT NULL,
+    holiday_date DATE         NOT NULL,
+
+    CONSTRAINT pk_ref_currency_holiday_type
+        PRIMARY KEY (id)
+);
+ALTER TABLE ref.currency_holiday_type
+    OWNER TO postgres;
+
 CREATE TABLE ref.ccy_pair_type
 (
     id           UUID         NOT NULL,
@@ -11,7 +27,9 @@ CREATE TABLE ref.ccy_pair_type
     is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_ccy_pair_type
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+    CONSTRAINT ccy_pair_type_name_unq
+        UNIQUE (name)
 );
 ALTER TABLE ref.ccy_pair_type
     OWNER TO postgres;
@@ -25,7 +43,9 @@ CREATE TABLE ref.product_type
     is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_product_type
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+    CONSTRAINT product_type_name_unq
+        UNIQUE (name)
 );
 ALTER TABLE ref.product_type
     OWNER TO postgres;
@@ -39,7 +59,9 @@ CREATE TABLE ref.style_type
     is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_style_type
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+    CONSTRAINT style_type_name_unq
+        UNIQUE (name)
 );
 ALTER TABLE ref.style_type
     OWNER TO postgres;
@@ -53,7 +75,9 @@ CREATE TABLE ref.direction_type
     is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_direction_type
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+    CONSTRAINT direction_type_name_unq
+        UNIQUE (name)
 );
 ALTER TABLE ref.direction_type
     OWNER TO postgres;
@@ -67,7 +91,10 @@ CREATE TABLE ref.strategy_type
     is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_strategy_type
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+    CONSTRAINT strategy_type_name_unq
+        UNIQUE (name)
+
 );
 ALTER TABLE ref.strategy_type
     OWNER TO postgres;
@@ -81,7 +108,9 @@ CREATE TABLE ref.pay_ccy_type
     is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_pay_ccy_type
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+    CONSTRAINT pay_ccy_type_name_unq
+        UNIQUE (name)
 );
 ALTER TABLE ref.pay_ccy_type
     OWNER TO postgres;
@@ -95,7 +124,9 @@ CREATE TABLE ref.premium_ccy_type
     is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_premium_ccy_type
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+    CONSTRAINT premium_ccy_type_name_unq
+        UNIQUE (name)
 );
 ALTER TABLE ref.premium_ccy_type
     OWNER TO postgres;
@@ -109,7 +140,9 @@ CREATE TABLE ref.premium_type
     is_enabled   BOOLEAN      NOT NULL DEFAULT TRUE,
 
     CONSTRAINT pk_ref_premium_type
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+    CONSTRAINT premium_type_name_unq
+        UNIQUE (name)
 );
 ALTER TABLE ref.premium_type
     OWNER TO postgres;
@@ -143,7 +176,9 @@ CREATE TABLE org.customer
     is_supported BOOLEAN      NOT NULL DEFAULT FALSE,
 
     CONSTRAINT pk_org_customer
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+    CONSTRAINT customer_name_unq
+        UNIQUE (name)
 );
 ALTER TABLE org.customer
     OWNER TO postgres;

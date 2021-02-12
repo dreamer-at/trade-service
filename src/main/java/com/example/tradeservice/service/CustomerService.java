@@ -1,5 +1,6 @@
 package com.example.tradeservice.service;
 
+import com.example.tradeservice.dto.RequestCheckDTO;
 import com.example.tradeservice.model.Customer;
 
 import java.util.List;
@@ -17,4 +18,7 @@ public interface CustomerService {
     void deleteById(UUID id);
 
     Customer findByEmail(String email);
+
+    boolean existsByNameAndIsSupportedIsTrue(String name);
+
 }

@@ -45,7 +45,7 @@ public class CheckControllerV1 {
     private final OperationService service;
 
     @PostMapping
-    public Boolean checkOperation(@RequestBody RequestCheckDTO dto) {
+    public boolean checkOperation(@RequestBody RequestCheckDTO dto) {
         return service.checkOperation(dto);
     }
 
