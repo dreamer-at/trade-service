@@ -8,7 +8,7 @@ public interface OperationService {
 
     String checkOperation(RequestCheckDTO dto);
 
-    String checkAllOperation(List<RequestCheckDTO> dto);
+    String checkAllOperations(List<RequestCheckDTO> dto);
 
     boolean checkValueDateAndTradeDate(RequestCheckDTO dto);
 

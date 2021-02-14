@@ -53,7 +53,7 @@ public class OperationServiceImpl implements OperationService {
     }
 
     @Override
-    public String checkAllOperation(final List<RequestCheckDTO> dto) {
+    public String checkAllOperations(final List<RequestCheckDTO> dto) {
         dto.forEach(this::checkOperation);
         return "All checks passed successfully";
     }
