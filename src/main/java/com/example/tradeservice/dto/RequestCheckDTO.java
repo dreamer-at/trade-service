@@ -29,7 +29,6 @@ public class RequestCheckDTO {
     private Date premiumDate;
     private String legalEntity;
     private String trader;
-    @JsonIgnore
     private Date valueDate;
     private Date excerciseStartDate;
 }

@@ -48,8 +48,13 @@ public class OperationServiceImpl implements OperationService {
                 }
             }
         }
-        
         saveEntity(dto);
+        return "All checks passed successfully";
+    }
+
+    @Override
+    public String checkAllOperation(final List<RequestCheckDTO> dto) {
+        dto.forEach(this::checkOperation);
         return "All checks passed successfully";
     }
 
@@ -60,10 +65,7 @@ public class OperationServiceImpl implements OperationService {
         // repository.save(o);
     }
 
-    @Override
-    public List<RequestCheckDTO> checkAllOperation(final RequestCheckDTO dto) {
-        return null;
-    }
+
 
     @Override
     public boolean checkValueDateAndTradeDate(final RequestCheckDTO dto) throws BadRequestException {

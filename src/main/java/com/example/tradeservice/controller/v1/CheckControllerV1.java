@@ -53,7 +53,7 @@ public class CheckControllerV1 {
 
     @PostMapping("all")
     @ResponseStatus(HttpStatus.OK)
-    public List<RequestCheckDTO> checkAllOperations(@RequestBody RequestCheckDTO dto) {
+    public String checkAllOperations(@RequestBody List<RequestCheckDTO> dto) {
         return service.checkAllOperation(dto);
     }
 }

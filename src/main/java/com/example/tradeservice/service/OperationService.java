@@ -1,7 +1,6 @@
 package com.example.tradeservice.service;
 
 import com.example.tradeservice.dto.RequestCheckDTO;
-import com.example.tradeservice.model.Operation;
 
 import java.util.List;
 
@@ -9,7 +8,7 @@ public interface OperationService {
 
     String checkOperation(RequestCheckDTO dto);
 
-    List<RequestCheckDTO> checkAllOperation(RequestCheckDTO dto);
+    String checkAllOperation(List<RequestCheckDTO> dto);
 
     boolean checkValueDateAndTradeDate(RequestCheckDTO dto);
 
