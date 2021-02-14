@@ -1,5 +1,6 @@
 package com.example.tradeservice.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
@@ -28,6 +29,7 @@ public class RequestCheckDTO {
     private Date premiumDate;
     private String legalEntity;
     private String trader;
+    @JsonIgnore
     private Date valueDate;
     private Date excerciseStartDate;
 }

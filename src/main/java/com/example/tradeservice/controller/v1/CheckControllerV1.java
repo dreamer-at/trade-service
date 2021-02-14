@@ -1,4 +1,4 @@
-package com.example.tradeservice.controller;
+package com.example.tradeservice.controller.v1;
 
 
 import com.example.tradeservice.dto.RequestCheckDTO;
@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/check/")
+@RequestMapping("/v1/operation/")
 public class CheckControllerV1 {
 
     /**

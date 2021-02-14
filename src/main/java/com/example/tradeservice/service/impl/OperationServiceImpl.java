@@ -31,23 +31,24 @@ public class OperationServiceImpl implements OperationService {
 
     @Override
     public String checkOperation(final RequestCheckDTO dto) {
-
-        if (checkValueDateAndTradeDate(dto)) {
-            if (valueOrCurrencyDateOnWeekend(dto)) {
-                if (ifCustomerIsSupported(dto)) {
-                    if (validateValueDateByProductType(dto)) {
-                        if (validateCurrenciesByISO4217(dto)) {
-                            if (validateAmericanStyle(dto)) {
-                                if (expiryAndPremiumDateBeforeDeliveryDate(dto)) {
-                                    log.info("All checks passed successfully, Customer: '{}', Trade date: '{}' ",
-                                            dto.getCustomer(), dto.getTradeDate());
-                                }
-                            }
+        if (dto.getValueDate() != null) {
+            if (checkValueDateAndTradeDate(dto)) {
+                valueOrCurrencyDateOnWeekend(dto);
+            }
+        }
+        if (ifCustomerIsSupported(dto)) {
+            if (validateValueDateByProductType(dto)) {
+                if (validateCurrenciesByISO4217(dto)) {
+                    if (validateAmericanStyle(dto)) {
+                        if (expiryAndPremiumDateBeforeDeliveryDate(dto)) {
+                            log.info("All checks passed successfully, Customer: '{}', Trade date: '{}' ",
+                                    dto.getCustomer(), dto.getTradeDate());
                         }
                     }
                 }
             }
         }
+        
         saveEntity(dto);
         return "All checks passed successfully";
     }
