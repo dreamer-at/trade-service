@@ -1,0 +1,18 @@
+{
+  "customer":"PLUTO3",
+  "ccyPair":"EURUSD",
+  "type":"Spot",
+  "style": "AMERICAN",
+  "direction":"BUY",
+  "tradeDate":"2016-12-23",
+  "amount1":1000000.00,
+  "amount2":1120000.00,
+  "rate":1.12,
+  "valueDate":"2016-12-28",
+  "legalEntity":"CS Zurich",
+  "trader":"JohannBaumfiddler",
+  "excerciseStartDate":"2016-12-25",
+  "expiryDate":"2016-12-28",
+  "premiumDate": "2016-08-12",
+  "deliveryDate": "2016-12-30"
+}
