@@ -58,7 +58,7 @@ public class OperationServiceImpl implements OperationService {
         return "All checks passed successfully";
     }
 
-    // TODO finish ip with static method toOperation in OperationDTO
+    // TODO finish up with static method toOperation in OperationDTO
     @Override
     public void saveEntity(final RequestCheckDTO dto) {
         Operation o = new Operation();
