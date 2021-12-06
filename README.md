@@ -11,11 +11,10 @@
 - American option style will have in addition the excerciseStartDate, which has to be after the trade date 
   but before the expiry date.
 - expiry date and premium date shall be before delivery date.
-# The validation response should include information about errors detected in the trade 
+# The validation response should include information about errors detected in the trade request
 (in case multiple are detected, all of them should be returned) and in case of bulk validation additional 
 linkage between the error and the actual trade.							
    ASSUMPTIONS:
 - Current date is 18.07.2017
 - Supported counterparties (customers) are: PLUTO1, PLUTO2
-- Only one legal entity is used: CS Zurich							
-
+- Only one legal entity is used: CS Zurich
